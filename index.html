@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chicken House — Vitré | Poulet fermier, pané et fait maison</title>
+<meta name="description" content="Chicken House, restaurant à Vitré (35). Burgers de poulet pané maison, poulet fermier Label Rouge rôti, sauces et frites maison, pain de boulanger. 21 rue de la Borderie.">
+<link rel="icon" type="image/png" href="assets/logo/favicon-32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="assets/logo/favicon-512.png" sizes="512x512">
+<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header" id="site-header">
+  <div class="wrap site-header__inner">
+    <a href="#" class="brand" aria-label="Chicken House — accueil">
+      <img src="assets/logo/chicken-house-yellow.png" alt="" class="brand__mark" width="44" height="50">
+      <span class="brand__word">Chicken<br>House</span>
+    </a>
+
+    <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+      <a href="#histoire">Notre histoire</a>
+      <a href="#carte">La carte</a>
+      <a href="#avis">Avis</a>
+      <a href="#infos">Infos &amp; horaires</a>
+    </nav>
+
+    <div class="site-header__actions">
+      <a class="btn btn--ghost-on-dark hide-mobile" href="tel:+33988487178">09 88 48 71 78</a>
+      <a class="btn btn--yellow" href="#infos">Commander</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <!-- ============ HERO / SCROLLYTELLING BURGER ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__pin">
+      <div class="hero__grain" aria-hidden="true"></div>
+
+      <!-- viewfinder / HUD chrome -->
+      <span class="hud-corner hud-corner--tl" aria-hidden="true"></span>
+      <span class="hud-corner hud-corner--tr" aria-hidden="true"></span>
+      <span class="hud-corner hud-corner--bl" aria-hidden="true"></span>
+      <span class="hud-corner hud-corner--br" aria-hidden="true"></span>
+
+      <div class="hero__rec" aria-hidden="true">
+        <span class="hero__rec-dot"></span>
+        <span class="hero__rec-label">Cuisson en direct</span>
+        <span class="hero__rec-time" id="rec-time">00:00:00</span>
+      </div>
+
+      <div class="hero__temp" aria-hidden="true">
+        <span class="hero__temp-label" id="temp-label">Huile en chauffe</span>
+        <span class="hero__temp-value"><span id="temp-value">24</span>°C</span>
+      </div>
+
+      <p class="hero__kicker">Vitré · Ille-et-Vilaine</p>
+
+      <h1 class="hero__title hero__title--a">
+        Le meilleur<br>du poulet.
+        <span class="hero__sub">Un goût qui donne des ailes.</span>
+      </h1>
+
+      <h2 class="hero__title hero__title--b">
+        Ici, le fast-food<br>se fait maison.
+      </h2>
+
+      <div class="burger" id="burger" aria-hidden="true">
+       <div class="burger__frame">
+        <div class="burger__stage" id="burger-stage">
+          <div class="burger__layer burger__layer--bun-top" data-dy="-165" data-dx="-6">
+            <span class="seed s1"></span><span class="seed s2"></span><span class="seed s3"></span>
+            <span class="seed s4"></span><span class="seed s5"></span>
+          </div>
+          <div class="burger__layer burger__layer--sauce" data-dy="-92" data-dx="10"></div>
+          <div class="burger__layer burger__layer--cheese" data-dy="-44" data-dx="-14"></div>
+          <div class="burger__layer burger__layer--patty" data-dy="8" data-dx="12"></div>
+          <div class="burger__layer burger__layer--lettuce" data-dy="60" data-dx="-10"></div>
+          <div class="burger__layer burger__layer--bun-bottom" data-dy="130" data-dx="6"></div>
+        </div>
+       </div>
+
+        <div class="callout callout--right callout--1" data-tag="0" style="top:16%">
+          <span class="callout__dot"></span><span class="callout__line"></span>
+          <span class="callout__label">Pain · boulanger</span>
+        </div>
+        <div class="callout callout--left callout--2" data-tag="1" style="top:33%">
+          <span class="callout__label">Sauce · maison</span>
+          <span class="callout__line"></span><span class="callout__dot"></span>
+        </div>
+        <div class="callout callout--right callout--3" data-tag="2" style="top:48%">
+          <span class="callout__dot"></span><span class="callout__line"></span>
+          <span class="callout__label">Cheddar fondant</span>
+        </div>
+        <div class="callout callout--left callout--4" data-tag="3" style="top:63%">
+          <span class="callout__label">Poulet · mariné 24h</span>
+          <span class="callout__line"></span><span class="callout__dot"></span>
+        </div>
+        <div class="callout callout--right callout--5" data-tag="4" style="top:78%">
+          <span class="callout__dot"></span><span class="callout__line"></span>
+          <span class="callout__label">Laitue du jour</span>
+        </div>
+      </div>
+
+      <div class="hero__chrono" aria-hidden="true">
+        <p class="hero__chrono-tag" id="chrono-tag">// Marinade</p>
+        <div class="hero__chrono-ruler">
+          <div class="hero__chrono-fill" id="chrono-fill"></div>
+          <div class="hero__chrono-ticks"></div>
+        </div>
+        <ol class="hero__chrono-steps" id="chrono-steps">
+          <li data-step="0">Marinade</li>
+          <li data-step="1">Panure</li>
+          <li data-step="2">Friture 180°C</li>
+          <li data-step="3">Dressage</li>
+        </ol>
+      </div>
+
+      <p class="hero__hint" id="hero-hint">Fais défiler<span aria-hidden="true"> ↓</span></p>
+    </div>
+  </section>
+
+  <!-- ============ MANIFESTE / HISTOIRE ============ -->
+  <section class="section manifesto" id="histoire">
+    <div class="wrap">
+      <p class="eyebrow">Notre histoire</p>
+      <h2 class="section-title">Un fast-food, oui.<br>Une usine, jamais.</h2>
+      <p class="manifesto__lead">
+        Chez Chicken House, la rapidité ne sacrifie rien. Le poulet est mariné et pané sur place,
+        la sauce ne sort d'aucun sachet, et le pain vient du boulanger d'à côté — pas d'un camion
+        frigorifique. On sert vite parce qu'on est efficaces, pas parce qu'on a raccourci les
+        étapes qui comptent.
+      </p>
+
+      <div class="pillars">
+        <article class="pillar">
+          <p class="pillar__num">Fermier</p>
+          <h3 class="pillar__title">Poulet Label Rouge</h3>
+          <p class="pillar__text">Rôti entier ou en demi, notre poulet vient des Fermes de Janzé,
+            élevé en plein air à quelques kilomètres de Vitré.</p>
+        </article>
+        <article class="pillar">
+          <p class="pillar__num">Boulanger</p>
+          <h3 class="pillar__title">Pain fait maison</h3>
+          <p class="pillar__text">Nos buns sont commandés chaque jour chez un artisan boulanger
+            local. Pas d'industriel, pas de longue conservation.</p>
+        </article>
+        <article class="pillar">
+          <p class="pillar__num">Maison</p>
+          <h3 class="pillar__title">Sauces sans sachet</h3>
+          <p class="pillar__text">César, ranch, sauce burger, sauce fromagère : tout est préparé
+            sur place, dans notre cuisine, avec nos recettes.</p>
+        </article>
+        <article class="pillar">
+          <p class="pillar__num">Artisan</p>
+          <h3 class="pillar__title">Frites &amp; dessert</h3>
+          <p class="pillar__text">Frites coupées maison, et desserts confiés à notre boulanger
+            partenaire — un burger se termine bien.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LA CARTE ============ -->
+  <section class="section menu" id="carte">
+    <div class="wrap">
+      <p class="eyebrow">La carte</p>
+      <h2 class="section-title">Quatre familles.<br>Zéro raccourci.</h2>
+
+      <div class="menu-tabs" role="tablist" aria-label="Catégories de la carte">
+        <button class="menu-tab is-active" role="tab" aria-selected="true" aria-controls="panel-burgers" id="tab-burgers">Burgers</button>
+        <button class="menu-tab" role="tab" aria-selected="false" aria-controls="panel-crousty" id="tab-crousty">Crousty's</button>
+        <button class="menu-tab" role="tab" aria-selected="false" aria-controls="panel-roti" id="tab-roti">Poulet fermier</button>
+        <button class="menu-tab" role="tab" aria-selected="false" aria-controls="panel-buckets" id="tab-buckets">Buckets &amp; extras</button>
+      </div>
+
+      <div class="menu-panels">
+
+        <div class="menu-panel is-active" id="panel-burgers" role="tabpanel" aria-labelledby="tab-burgers">
+          <ul class="menu-list">
+            <li class="menu-item">
+              <div class="menu-item__head"><h3>Classic Bacon</h3><span class="menu-item__price">9,50&nbsp;€ <em>/ 11,50&nbsp;€ menu</em></span></div>
+              <p>Filet de poulet croustillant, bacon de dinde, cheddar, sauce burger maison, laitue, tomate.</p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__head"><h3>Crispy Avocado <span class="tag-new">Nouveau</span></h3><span class="menu-item__price">9,50&nbsp;€ <em>/ 11,50&nbsp;€ menu</em></span></div>
+              <p>Filet de poulet croustillant, avocat, bacon de dinde, cheddar, sauce ranch maison, oignon frit, laitue, tomate.</p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__head"><h3>Le Raclette</h3><span class="menu-item__price">10&nbsp;€ <em>/ 12&nbsp;€ menu</em></span></div>
+              <p>Filet de poulet croustillant, raclette, bacon de dinde, sauce poivre, oignons confits, laitue, tomate.</p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__head"><h3>L'Effiloché</h3><span class="menu-item__price">10&nbsp;€ <em>/ 12&nbsp;€ menu</em></span></div>
+              <p>Poulet effiloché, cheddar, sauce barbecue, coleslaw, oignon.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="menu-panel" id="panel-crousty" role="tabpanel" aria-labelledby="tab-crousty" hidden>
+          <ul class="menu-list">
+            <li class="menu-item">
+              <div class="menu-item__head"><h3>Wrap</h3><span class="menu-item__price">8,50&nbsp;€ <em>/ 10,50&nbsp;€ menu</em></span></div>
+              <p>Filet de poulet croustillant, cheddar, laitue, bacon, sauce César, oignon crispy.</p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__head"><h3>Riz Crousty</h3><span class="menu-item__price">9&nbsp;€ <em>/ 10,50&nbsp;€ menu</em></span></div>
+              <p>Filet de poulet croustillant, riz, oignon frit, sauce ranch maison, sweet chili thaï.</p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__head"><h3>Tacos</h3><span class="menu-item__price">8,50&nbsp;€ <em>/ 10,50&nbsp;€ menu</em></span></div>
+              <p>Filet de poulet croustillant, frites maison, cheddar, sauce burger maison, sauce fromagère.</p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__head"><h3>Salade César</h3><span class="menu-item__price">7,50&nbsp;€ <em>/ 9&nbsp;€ menu</em></span></div>
+              <p>Filet de poulet croustillant, laitue, oignon frit, parmigiano, sauce César, bacon de dinde.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="menu-panel" id="panel-roti" role="tabpanel" aria-labelledby="tab-roti" hidden>
+          <p class="menu-panel__note">Poulet fermier Label Rouge, élevé en plein air par
+            <strong>Les Fermes de Janzé</strong> — rôti sur place.</p>
+          <ul class="menu-list">
+            <li class="menu-item">
+              <div class="menu-item__head"><h3>Menu poulet rôti entier</h3><span class="menu-item__price">25,50&nbsp;€</span></div>
+              <p>1 poulet fermier de Janzé + 2 accompagnements + 1 bouteille.</p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__head"><h3>Poulet rôti entier seul</h3><span class="menu-item__price">22&nbsp;€</span></div>
+              <p>1 poulet fermier de Janzé.</p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__head"><h3>Menu demi poulet rôti</h3><span class="menu-item__price">15,50&nbsp;€</span></div>
+              <p>1 demi poulet fermier de Janzé + 1 accompagnement + 1 boisson.</p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__head"><h3>Demi poulet rôti seul</h3><span class="menu-item__price">13,50&nbsp;€</span></div>
+              <p>1 demi poulet fermier de Janzé.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="menu-panel" id="panel-buckets" role="tabpanel" aria-labelledby="tab-buckets" hidden>
+          <ul class="menu-list">
+            <li class="menu-item">
+              <div class="menu-item__head"><h3>Bucket 1 pers.</h3><span class="menu-item__price">12&nbsp;€</span></div>
+              <p>5 tenders ou 5 wings.</p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__head"><h3>Bucket 2 pers. / Mixte 2</h3><span class="menu-item__price">23,50&nbsp;€</span></div>
+              <p>10 tenders ou 10 wings — ou 5 tenders et 5 wings.</p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__head"><h3>Bucket 4 pers. / Mixte 4</h3><span class="menu-item__price">45&nbsp;€</span></div>
+              <p>20 tenders ou 20 wings — ou 10 tenders et 10 wings.</p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__head"><h3>P'ti Monstre <span class="tag-new tag-new--kids">Enfant</span></h3><span class="menu-item__price">5&nbsp;€</span></div>
+              <p>3 tenders + 1 Capri-Sun + 1 accompagnement.</p>
+            </li>
+          </ul>
+          <div class="extras">
+            <h4>Extras</h4>
+            <ul class="extras-list">
+              <li><span>Frites maison</span><span>2,80&nbsp;€</span></li>
+              <li><span>Frites de patate douce</span><span>3,50&nbsp;€</span></li>
+              <li><span>Tenders x3</span><span>6&nbsp;€</span></li>
+              <li><span>Wings x3</span><span>6&nbsp;€</span></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AVIS ============ -->
+  <section class="section reviews" id="avis">
+    <div class="wrap">
+      <p class="eyebrow eyebrow--on-dark">Ils en parlent</p>
+      <h2 class="section-title section-title--on-dark">160 avis Google.<br>Un seul qui compte&nbsp;: le vôtre.</h2>
+
+      <div class="review-cards">
+        <a class="review-card" href="https://www.google.com/maps/search/?api=1&query=Chicken%20House%2021%20Rue%20de%20la%20Borderie%2035500%20Vitr%C3%A9" target="_blank" rel="noopener">
+          <span class="review-card__score">4,5</span>
+          <span class="review-card__stars" aria-hidden="true">★★★★★</span>
+          <span class="review-card__source">Google — 160 avis</span>
+        </a>
+        <a class="review-card" href="https://www.ubereats.com" target="_blank" rel="noopener">
+          <span class="review-card__score">4,3</span>
+          <span class="review-card__stars" aria-hidden="true">★★★★☆</span>
+          <span class="review-card__source">Uber Eats — 66 avis</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INFOS PRATIQUES ============ -->
+  <section class="section infos" id="infos">
+    <div class="wrap infos__grid">
+      <div class="infos__col">
+        <p class="eyebrow">Nous trouver</p>
+        <h2 class="section-title">21 rue de la Borderie,<br>à Vitré.</h2>
+
+        <dl class="infos-list">
+          <div>
+            <dt>Adresse</dt>
+            <dd><a href="https://www.google.com/maps/search/?api=1&query=Chicken%20House%2021%20Rue%20de%20la%20Borderie%2035500%20Vitr%C3%A9" target="_blank" rel="noopener">21 Rue de la Borderie, 35500 Vitré</a></dd>
+          </div>
+          <div>
+            <dt>Téléphone</dt>
+            <dd><a href="tel:+33988487178">09 88 48 71 78</a></dd>
+          </div>
+          <div>
+            <dt>Instagram</dt>
+            <dd><a href="https://www.instagram.com/chickenhouse.vitre/" target="_blank" rel="noopener">@chickenhouse.vitre</a></dd>
+          </div>
+          <div>
+            <dt>Livraison</dt>
+            <dd><a href="https://www.ubereats.com" target="_blank" rel="noopener">Uber Eats</a></dd>
+          </div>
+        </dl>
+
+        <h3 class="infos__hours-title">Horaires</h3>
+        <table class="hours-table">
+          <tbody>
+            <tr><th>Lundi</th><td>Fermé</td></tr>
+            <tr><th>Mardi</th><td>11h30–14h00 · 18h30–22h30</td></tr>
+            <tr><th>Mercredi</th><td>11h30–14h00 · 18h30–22h30</td></tr>
+            <tr><th>Jeudi</th><td>11h30–14h00 · 18h30–22h30</td></tr>
+            <tr><th>Vendredi</th><td>11h30–14h00 · 18h30–22h30</td></tr>
+            <tr><th>Samedi</th><td>11h30–14h00 · 18h30–22h30</td></tr>
+            <tr><th>Dimanche</th><td>18h30–22h30</td></tr>
+          </tbody>
+        </table>
+
+        <div class="infos__cta">
+          <a class="btn btn--yellow" href="tel:+33988487178">Appeler pour commander</a>
+          <a class="btn btn--outline" href="https://www.ubereats.com" target="_blank" rel="noopener">Commander sur Uber&nbsp;Eats</a>
+        </div>
+      </div>
+
+      <div class="infos__map">
+        <iframe
+          title="Localisation de Chicken House à Vitré"
+          src="https://www.google.com/maps?q=21+Rue+de+la+Borderie,+35500+Vitr%C3%A9&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <a href="#" class="brand brand--footer" aria-label="Chicken House — accueil">
+      <img src="assets/logo/chicken-house-white.png" alt="" class="brand__mark" width="40" height="46">
+      <span class="brand__word">Chicken<br>House</span>
+    </a>
+    <nav class="footer-nav" aria-label="Navigation pied de page">
+      <a href="#histoire">Notre histoire</a>
+      <a href="#carte">La carte</a>
+      <a href="#avis">Avis</a>
+      <a href="#infos">Infos &amp; horaires</a>
+    </nav>
+    <div class="footer-contact">
+      <p>21 Rue de la Borderie, 35500 Vitré</p>
+      <p><a href="tel:+33988487178">09 88 48 71 78</a></p>
+      <p><a href="https://www.instagram.com/chickenhouse.vitre/" target="_blank" rel="noopener">@chickenhouse.vitre</a></p>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="site-footer__legal">© 2026 Chicken House — Vitré.</p>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
