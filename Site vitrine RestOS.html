@@ -1,0 +1,1112 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Site vitrine RestOS</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap">
+<style>
+/* Layout : nuit profonde, un seul univers visuel. Le produit est montré dans un cadre de tablette posé sur un halo
+   bleu-violet-cyan ; les modules vivent dans une grille de panneaux en verre dépoli. Charte RestOS : Syne / Outfit / DM Mono. */
+:root{
+  --bg:#05060d; --bg-2:#0a0c19; --screen:#080a14;
+  --ink:#f4f5fb; --muted:#a2a8c3; --dim:#6b7190;
+  --line:rgba(255,255,255,.09); --line-2:rgba(255,255,255,.16);
+  --glass:rgba(255,255,255,.04); --glass-2:rgba(255,255,255,.08);
+  --blue:#5b86ff; --violet:#a57bff; --cyan:#3fd8f5; --rose:#ff7eb6; --peach:#ff9f7a;
+  --grad:linear-gradient(100deg,#5b86ff 0%,#a57bff 52%,#3fd8f5 100%);
+  --btn:linear-gradient(100deg,#3f6bff,#8a5bff);
+  --on-btn:#ffffff; --glow:rgba(96,110,255,.55);
+  --ok:#43dea0; --warn:#ffb85c;
+  --shadow:0 40px 80px -40px rgba(0,0,0,.85);
+  --display:"Syne","Outfit",system-ui,sans-serif;
+  --body:"Outfit","Segoe UI",system-ui,sans-serif;
+  --mono:"DM Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:22px; --r-sm:14px; --wrap:1140px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+h1,h2,h3,h4,p,ul,ol,dl,dd,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+svg.i{width:1.2em;height:1.2em;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:20px}
+section{position:relative;padding-block:88px;scroll-margin-top:88px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
+h1,h2{font-family:var(--display);font-weight:800;letter-spacing:-.035em;text-wrap:balance}
+h1{font-size:clamp(2.7rem,8.4vw,5.6rem);line-height:.98}
+h2{font-size:clamp(1.9rem,4.6vw,3.2rem);line-height:1.04}
+h3{font-family:var(--display);font-weight:700;font-size:1.3rem;line-height:1.2;letter-spacing:-.02em}
+.g{color:var(--violet)}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+}
+.lead{font-size:clamp(1.1rem,2.2vw,1.3rem);font-weight:300;color:var(--muted);max-width:56ch}
+.head{display:grid;gap:16px;margin-bottom:44px;max-width:60ch}
+.head.c{text-align:center;justify-items:center;margin-inline:auto}
+.small{font-size:.85rem;color:var(--dim)}
+
+/* Boutons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border:0;border-radius:999px;background:var(--btn);color:var(--on-btn);font-weight:600;cursor:pointer;box-shadow:0 10px 34px -10px var(--glow),inset 0 1px 0 rgba(255,255,255,.28);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px -10px var(--glow),inset 0 1px 0 rgba(255,255,255,.28)}
+.btn.ghost{background:var(--glass);box-shadow:inset 0 0 0 1px var(--line-2);color:var(--ink)}
+.btn.ghost:hover{background:var(--glass-2);box-shadow:inset 0 0 0 1px var(--line-2)}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+
+/* Verre */
+.glass{position:relative;border:1px solid var(--line);border-radius:var(--r);background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.018));box-shadow:inset 0 1px 0 rgba(255,255,255,.07),var(--shadow);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.ring{border:1px solid transparent;background:linear-gradient(180deg,#10132a,#0a0c1b) padding-box,var(--grad) border-box}
+
+/* En-tête flottant */
+.top{position:sticky;top:calc(env(safe-area-inset-top,0px) + 10px);z-index:30;padding-inline:14px}
+.bar{max-width:var(--wrap);margin-inline:auto;display:flex;align-items:center;gap:22px;padding:8px 8px 8px 22px;border-radius:999px;border:1px solid var(--line);background:rgba(8,10,22,.72);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4)}
+.brand{font-family:var(--display);font-weight:800;font-size:1.3rem;letter-spacing:-.04em}
+.nav{display:flex;gap:26px;margin-left:auto;font-size:.95rem;color:var(--muted)}
+.nav a:hover{color:var(--ink)}
+.bar .btn{min-height:42px;padding:0 20px;font-size:.95rem}
+@media (max-width:860px){ .nav{display:none} .bar .btn{margin-left:auto} }
+
+/* Accroche */
+.hero{padding-block:76px 40px;text-align:center;overflow:clip}
+.hero::before{content:"";position:absolute;inset:-180px 0 auto;height:900px;pointer-events:none;
+  background:radial-gradient(46% 42% at 50% 30%,rgba(91,110,255,.34),rgba(0,0,0,0) 70%),radial-gradient(30% 30% at 18% 22%,rgba(165,123,255,.22),rgba(0,0,0,0) 70%),radial-gradient(28% 28% at 84% 26%,rgba(63,216,245,.16),rgba(0,0,0,0) 70%)}
+.hero::after{content:"";position:absolute;inset:0 0 auto;height:640px;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,rgba(0,0,0,0) 1px),linear-gradient(90deg,var(--line) 1px,rgba(0,0,0,0) 1px);background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(60% 70% at 50% 0%,#000,rgba(0,0,0,0) 75%);mask-image:radial-gradient(60% 70% at 50% 0%,#000,rgba(0,0,0,0) 75%);opacity:.6}
+.hero .wrap{position:relative;z-index:1;display:grid;justify-items:center;gap:26px}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:7px 16px 7px 12px;border-radius:999px;border:1px solid var(--line-2);background:var(--glass);font-size:.88rem;color:var(--muted)}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 4px rgba(63,216,245,.18)}
+.hero .lead{margin-inline:auto}
+.hero .row{justify-content:center}
+
+/* Scène produit */
+.stage{position:relative;width:100%;max-width:1060px;margin-top:34px;text-align:left}
+.stage::before{content:"";position:absolute;inset:14% 6% -4%;background:var(--grad);filter:blur(90px);opacity:.36;pointer-events:none}
+.device{position:relative;padding:10px;border-radius:28px;background:linear-gradient(180deg,#252a42,#0d0f1c);border:1px solid var(--line-2);box-shadow:0 70px 130px -50px rgba(0,0,0,.95),inset 0 1px 0 rgba(255,255,255,.16)}
+.screen{display:grid;grid-template-columns:58px minmax(0,1fr) 300px;border-radius:19px;overflow:hidden;background:var(--screen);border:1px solid var(--line)}
+.rail{display:grid;align-content:start;justify-items:center;gap:10px;padding:14px 0;border-right:1px solid var(--line);background:rgba(255,255,255,.02)}
+.rail span{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;color:var(--dim)}
+.rail span.on{background:var(--btn);color:var(--on-btn);box-shadow:0 8px 20px -8px var(--glow)}
+.cat{min-width:0;padding:16px;display:grid;gap:14px;align-content:start}
+.cat-h{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.cat-h b{font-family:var(--display);font-size:1.05rem;letter-spacing:-.02em}
+.cat-h span{font-size:.78rem;color:var(--dim)}
+.pills{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.pills::-webkit-scrollbar{display:none}
+.pills button{flex:none;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--glass);font-size:.85rem;color:var(--muted);cursor:pointer}
+.pills button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg);font-weight:600}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.tile{--c:var(--blue);display:grid;gap:6px;align-content:space-between;min-height:118px;padding:12px;border-radius:var(--r-sm);border:1px solid var(--line);background:var(--glass);text-align:left;cursor:pointer;transition:transform .15s,border-color .15s}
+@supports (background:color-mix(in srgb,red 10%,blue)){
+  .tile{background:radial-gradient(130% 90% at 0% 0%,color-mix(in srgb,var(--c) 26%,transparent),transparent 62%),var(--glass)}
+}
+.tile:hover{transform:translateY(-2px);border-color:var(--line-2)}
+.tile:active{transform:scale(.97)}
+.tile .k{display:flex;align-items:center;gap:6px;font-size:.66rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tile .k i{width:7px;height:7px;border-radius:50%;background:var(--c)}
+.tile b{display:block;font-weight:600;font-size:.98rem;line-height:1.2}
+.tile small{display:block;font-size:.76rem;color:var(--dim);line-height:1.3;margin-top:2px}
+.tile .p{font-size:.85rem;color:var(--ink)}
+.tix{display:flex;flex-direction:column;min-width:0;border-left:1px solid var(--line);background:rgba(255,255,255,.025)}
+.tix-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:16px 16px 12px;border-bottom:1px solid var(--line)}
+.tix-h b{font-family:var(--display);font-size:1.05rem}
+.tix-h span{font-size:.78rem;color:var(--dim)}
+.lines{flex:1;display:grid;align-content:start;gap:10px;padding:14px 16px;font-size:.9rem;min-height:170px}
+.lines li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:baseline}
+.lines .q{display:grid;place-items:center;min-width:24px;height:22px;padding:0 4px;border-radius:7px;background:var(--glass-2);font-size:.75rem}
+.lines .empty{display:block;color:var(--dim)}
+.sum{display:grid;gap:6px;padding:14px 16px;border-top:1px dashed var(--line-2);font-size:.82rem;color:var(--dim)}
+.sum div{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.sum .tot{color:var(--ink);font-size:.95rem}
+.sum .tot span:last-child{font-size:1.5rem;font-weight:500}
+.tix .btn{margin:0 16px 16px;min-height:48px}
+.caption{margin-top:16px;font-size:.85rem;color:var(--dim);text-align:center}
+
+.float{position:absolute;z-index:2;display:none;gap:4px;padding:14px 16px;border-radius:18px;border:1px solid var(--line-2);background:rgba(16,19,40,.74);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 30px 60px -24px rgba(0,0,0,.9);font-size:.85rem;animation:bob 7s ease-in-out infinite}
+.float b{font-weight:600}
+.float span{color:var(--muted);font-size:.8rem}
+.float .big{font-size:1.5rem;color:var(--ink)}
+.float.fa{right:calc(100% - 26px);top:20%;width:210px}
+.float.fb{left:calc(100% - 22px);bottom:30%;width:210px;animation-delay:-3.5s}
+.float .st{display:inline-flex;align-items:center;gap:6px;color:var(--warn);font-size:.78rem}
+@keyframes bob{50%{transform:translateY(-10px)}}
+@media (min-width:1420px){ .float{display:grid} }
+@media (max-width:900px){ .screen{grid-template-columns:minmax(0,1fr) 260px} .rail{display:none} .tiles{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:680px){ .screen{grid-template-columns:minmax(0,1fr)} .tix{border-left:0;border-top:1px solid var(--line)} .lines{min-height:0} .tile{min-height:104px} .device{padding:7px;border-radius:22px} .screen{border-radius:16px} }
+
+/* Bandeau de repères */
+.marks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--line)}
+.marks li{display:grid;gap:2px;padding:24px 20px;background:var(--bg-2);text-align:center}
+.marks b{font-family:var(--display);font-weight:800;font-size:2.4rem;line-height:1;letter-spacing:-.04em}
+.marks span{color:var(--muted);font-size:.92rem}
+@media (max-width:720px){ .marks{grid-template-columns:repeat(2,minmax(0,1fr))} }
+
+/* Grille des modules */
+.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px}
+.card{grid-column:span 12;display:grid;grid-template-rows:auto 1fr;gap:22px;padding:30px;min-width:0;overflow:hidden}
+.card::before{content:"";position:absolute;inset:-40% 40% auto -20%;height:70%;background:radial-gradient(closest-side,var(--tint,rgba(91,134,255,.20)),rgba(0,0,0,0));pointer-events:none}
+.card > *{position:relative}
+.card .t{display:grid;gap:10px;max-width:46ch}
+.card .t p{color:var(--muted)}
+.card .eyebrow svg{width:1.3em;height:1.3em}
+@media (min-width:920px){ .s7{grid-column:span 7} .s5{grid-column:span 5} }
+.tv{--tint:rgba(165,123,255,.20)} .tc{--tint:rgba(63,216,245,.16)}
+
+.card > .ui{align-self:end}
+.ui{border-radius:var(--r-sm);border:1px solid var(--line);background:rgba(5,6,13,.6);min-width:0}
+.ui-h{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:11px 14px;border-bottom:1px solid var(--line);font-size:.82rem;font-weight:600}
+.ui-h em{font-style:normal;font-weight:400;color:var(--dim);font-size:.75rem}
+.rows li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:11px 14px;border-bottom:1px solid var(--line);font-size:.92rem}
+.rows li:last-child{border-bottom:0}
+.rows .paid{color:var(--dim)}
+.box{display:grid;place-items:center;width:20px;height:20px;border-radius:6px;border:1px solid var(--line-2)}
+.box.on{background:var(--btn);border-color:transparent;color:var(--on-btn)}
+.box svg{width:13px;height:13px;stroke-width:2.4}
+.tagl{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;border:1px solid var(--line);font-size:.75rem;color:var(--muted);white-space:nowrap}
+.tagl.ok{color:var(--ok);border-color:rgba(67,222,160,.35)}
+.tagl.wa{color:var(--warn);border-color:rgba(255,184,92,.4)}
+.tagl svg{width:13px;height:13px}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 14px;border-top:1px solid var(--line);font-size:.92rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+
+.pin{display:grid;gap:16px;justify-items:center;padding:22px 16px;border-bottom:1px solid var(--line)}
+.who{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.who span{padding:8px 16px;border-radius:999px;border:1px solid var(--line);font-size:.9rem;color:var(--muted)}
+.who span.on{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:600}
+.dots{display:flex;gap:12px}
+.dots i{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--line-2)}
+.dots i.f{background:var(--grad);border-color:transparent;box-shadow:0 0 14px var(--glow)}
+
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border-bottom:1px solid var(--line)}
+.kpis div{display:grid;gap:2px;padding:12px 14px;background:rgba(5,6,13,.9);min-width:0}
+.kpis span{font-size:.72rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+.kpis b{font-family:var(--mono);font-weight:500;font-size:1.05rem;white-space:nowrap}
+@media (max-width:520px){ .kpis div{padding:10px} .kpis b{font-size:.9rem} .kpis span{font-size:.62rem} }
+.chart{padding:16px 14px 12px}
+.bars{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;align-items:end;height:132px;border-bottom:1px solid var(--line-2)}
+.bars div{position:relative;height:100%;display:flex;align-items:flex-end;justify-content:center}
+.bars i{display:block;width:min(100%,26px);height:var(--h);border-radius:4px 4px 0 0;background:var(--blue)}
+.bars div:hover i{background:var(--cyan)}
+.bars u{position:absolute;left:8%;right:8%;bottom:var(--o);height:2px;background:var(--ink);opacity:.8}
+.bars em{position:absolute;bottom:calc(var(--h) + 6px);font-style:normal;font-family:var(--mono);font-size:.7rem;color:var(--ink);white-space:nowrap}
+.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;padding-top:6px;font-size:.72rem;color:var(--dim);text-align:center}
+.legend{display:flex;gap:16px;flex-wrap:wrap;padding-top:10px;font-size:.75rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend .sb{width:10px;height:10px;border-radius:2px;background:var(--blue)}
+.legend .sl{width:14px;height:2px;background:var(--ink)}
+
+.quad{position:relative;aspect-ratio:1.25;max-width:100%;margin:14px;border-radius:10px;border:1px solid var(--line);
+  background:linear-gradient(var(--line-2),var(--line-2)) 50% 0/1px 100% no-repeat,linear-gradient(var(--line-2),var(--line-2)) 0 50%/100% 1px no-repeat}
+.quad .ql{position:absolute;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.quad .ql.a{right:10px;top:8px;color:var(--ink)} .quad .ql.b{left:10px;top:8px} .quad .ql.c{right:10px;bottom:8px} .quad .ql.d{left:10px;bottom:8px}
+.quad .pt{position:absolute;left:var(--x);bottom:var(--y);width:11px;height:11px;margin:0 0 -5px -5px;border-radius:50%;background:var(--violet);box-shadow:0 0 0 2px var(--screen)}
+.quad .pt span{position:absolute;left:15px;top:-5px;font-size:.74rem;color:var(--ink);white-space:nowrap}
+.quad .pt.l span{left:auto;right:15px}
+.axes{display:flex;justify-content:space-between;padding:0 14px 12px;font-size:.72rem;color:var(--dim)}
+
+.prog{height:6px;border-radius:99px;background:var(--glass-2);overflow:hidden;flex:1;min-width:80px}
+.prog i{display:block;height:100%;width:71%;border-radius:99px;background:var(--grad)}
+
+.chat{display:grid;gap:12px;padding:16px}
+.bub{padding:12px 16px;border-radius:18px;font-size:.95rem;max-width:88%}
+.bub.me{justify-self:end;background:var(--btn);color:var(--on-btn);border-bottom-right-radius:6px}
+.bub.ai{background:var(--glass-2);border:1px solid var(--line);border-bottom-left-radius:6px}
+.camp{display:grid;gap:12px;padding:14px;border-radius:var(--r-sm);max-width:420px}
+.camp h4{font-family:var(--display);font-size:1.05rem;letter-spacing:-.01em}
+.camp dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.camp dt{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--dim)}
+.camp dd{font-family:var(--mono);font-size:.9rem}
+.mini{display:inline-flex;align-items:center;min-height:34px;padding:0 16px;border-radius:999px;font-size:.85rem;font-weight:600;border:1px solid var(--line-2)}
+.mini.go{background:var(--btn);border-color:transparent;color:var(--on-btn)}
+
+/* Liste complète */
+.all{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;margin-top:18px;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--line)}
+.all > div{display:grid;gap:14px;align-content:start;padding:26px 22px;background:var(--bg-2)}
+.all h3{font-size:1.05rem}
+.feat{display:grid;gap:9px;font-size:.95rem;color:var(--muted)}
+.feat li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:start}
+.feat svg{color:var(--cyan);margin-top:.22em;width:1em;height:1em;stroke-width:2.2}
+@media (max-width:980px){ .all{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:560px){ .all{grid-template-columns:minmax(0,1fr)} }
+
+/* Comparatif */
+.tblw{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+.cmp{padding:6px}
+.cmp th,.cmp td{padding:16px 18px;text-align:left;border-bottom:1px solid var(--line)}
+.cmp tr:last-child td{border-bottom:0}
+.cmp th{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.cmp td:first-child{font-weight:500}
+.cmp td:nth-child(2){color:var(--dim)}
+.cmp td:nth-child(3),.cmp th:nth-child(3){background:rgba(91,134,255,.09)}
+.cmp th:nth-child(3){color:var(--ink);border-radius:14px 14px 0 0}
+.cmp tr:last-child td:nth-child(3){border-radius:0 0 14px 14px}
+.yes{display:inline-flex;align-items:center;gap:8px;font-weight:600}
+.yes svg{color:var(--ok);stroke-width:2.4}
+
+/* Étapes */
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;counter-reset:s}
+.steps li{display:grid;gap:10px;align-content:start;padding:24px 20px;counter-increment:s}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--btn);color:var(--on-btn);font-family:var(--display);font-weight:800;box-shadow:0 8px 24px -8px var(--glow)}
+.steps h3{font-size:1.08rem}
+.steps p{font-size:.95rem;color:var(--muted)}
+@media (max-width:1020px){ .steps{grid-template-columns:minmax(0,1fr)} .steps li{grid-template-columns:auto minmax(0,1fr);column-gap:16px} .steps li::before{grid-row:span 2} }
+
+/* Tarifs */
+.plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:900px;margin-inline:auto}
+.plan{display:grid;gap:20px;align-content:start;padding:34px 30px;border-radius:var(--r)}
+.plan .badge{justify-self:start;padding:4px 12px;border-radius:999px;background:var(--grad);color:var(--bg);font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.price b{font-family:var(--display);font-weight:800;font-size:3.8rem;line-height:1;letter-spacing:-.05em}
+.price span{color:var(--muted)}
+.plan .feat{color:var(--ink)}
+@media (max-width:760px){ .plans{grid-template-columns:minmax(0,1fr)} }
+
+/* Histoire */
+.story{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px;align-items:stretch}
+.story .txt{display:grid;gap:18px;align-content:center;padding:8px 0}
+.story .txt p{color:var(--muted);max-width:56ch}
+.facts{display:grid;gap:0;padding:8px 26px}
+.facts div{display:grid;gap:2px;padding:18px 0;border-bottom:1px solid var(--line)}
+.facts div:last-child{border-bottom:0}
+.facts dt{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.facts dd{font-size:1.1rem;font-weight:500}
+@media (max-width:860px){ .story{grid-template-columns:minmax(0,1fr)} }
+
+/* FAQ */
+.faq{display:grid;gap:10px;max-width:820px;margin-inline:auto}
+.faq details{border-radius:18px;border:1px solid var(--line);background:var(--glass)}
+.faq details[open]{background:var(--glass-2);border-color:var(--line-2)}
+.faq summary{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:20px 22px;font-weight:500;font-size:1.08rem;cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1px solid var(--line-2);font-size:1.2rem;line-height:1;color:var(--cyan)}
+.faq details[open] summary::after{content:"\2212"}
+.faq details p{padding:0 22px 22px;color:var(--muted);max-width:68ch}
+
+/* Demande de démo */
+.cta{overflow:clip}
+.cta::before{content:"";position:absolute;inset:10% 10% 0;background:var(--grad);filter:blur(120px);opacity:.22;pointer-events:none}
+.contact{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:44px;align-items:center}
+.contact .txt{display:grid;gap:18px}
+.contact .txt p{color:var(--muted)}
+form,.done{display:grid;gap:16px;padding:30px;border-radius:var(--r)}
+.f2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+label,legend{display:block;font-size:.85rem;font-weight:500;color:var(--muted);margin-bottom:7px;padding:0}
+.field input,.field select,.field textarea{width:100%;min-height:50px;padding:12px 14px;border-radius:13px;border:1px solid var(--line-2);background:rgba(5,6,13,.6)}
+.field textarea{min-height:96px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 4px rgba(91,134,255,.22)}
+fieldset{border:0;padding:0;margin:0}
+.checks{display:flex;flex-wrap:wrap;gap:8px}
+.checks label{display:inline-flex;align-items:center;gap:8px;margin:0;padding:9px 16px;border-radius:999px;border:1px solid var(--line-2);color:var(--ink);font-size:.95rem;cursor:pointer}
+.checks input{width:16px;height:16px;accent-color:var(--blue)}
+.err{color:var(--warn);font-size:.92rem;font-weight:500}
+.done{justify-items:start;align-content:center}
+.done .ic{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--btn);color:var(--on-btn)}
+@media (max-width:900px){ .contact{grid-template-columns:minmax(0,1fr)} }
+@media (max-width:520px){ .f2{grid-template-columns:minmax(0,1fr)} form,.done{padding:22px} .card{padding:22px} section{padding-block:64px} }
+
+/* Pages légales */
+.legal{padding-block:48px 88px}
+.legal .wrap{max-width:860px}
+.ltabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:34px}
+.ltabs a{padding:8px 16px;border-radius:999px;border:1px solid var(--line-2);background:var(--glass);font-size:.9rem;color:var(--muted)}
+.ltabs a[aria-current="page"]{background:var(--ink);border-color:var(--ink);color:var(--bg);font-weight:600}
+.ltabs a.back{margin-right:auto;color:var(--ink)}
+.doc{display:grid;gap:18px;padding:34px 30px}
+.doc h1{font-size:clamp(2rem,5.4vw,3.2rem);line-height:1.04}
+.doc h2{font-family:var(--display);font-size:1.25rem;font-weight:700;letter-spacing:-.015em;line-height:1.25;margin-top:14px}
+.doc p,.doc li{color:var(--muted);max-width:70ch}
+.doc ul{list-style:disc;padding-left:22px;display:grid;gap:6px}
+.doc b{color:var(--ink);font-weight:500}
+.doc a{color:var(--cyan);text-decoration:underline;text-underline-offset:3px}
+.todo{background:rgba(255,184,92,.12);color:var(--warn);border:1px dashed rgba(255,184,92,.5);border-radius:6px;padding:0 6px;font-size:.92em;font-style:normal}
+.draft{justify-self:start;display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border-radius:999px;border:1px dashed rgba(255,184,92,.5);color:var(--warn);font-size:.82rem}
+.small a{color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+@media (max-width:520px){ .doc{padding:24px 20px} }
+
+footer{border-top:1px solid var(--line);padding-block:34px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center;font-size:.9rem;color:var(--dim)}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
+footer a:hover{color:var(--ink)}
+
+@media (prefers-reduced-motion: reduce){ .float{animation:none} .btn,.tile{transition:none} }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M5 3v18l2.5-1.5L10 21l2-1.5 2 1.5 2.5-1.5L19 21V3l-2.5 1.5L14 3l-2 1.5L10 3 7.5 4.5 5 3Z"/><path d="M9 9h6M9 13h6"/></symbol>
+  <symbol id="i-thermo" viewBox="0 0 24 24"><path d="M14 14.76V4a2 2 0 0 0-4 0v10.76a4 4 0 1 0 4 0Z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18.5 14.5a6.5 6.5 0 0 1 3 5.5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+  <symbol id="i-mega" viewBox="0 0 24 24"><path d="m3 11 18-5v12L3 14v-3Z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3Z"/><path d="M12 10v4M12 17h.01"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="bar">
+    <a class="brand" href="#haut">Rest<span class="g">OS</span></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#produit">Produit</a>
+      <a href="#inclus">Tout inclus</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#faq">Questions</a>
+    </nav>
+    <a class="btn" href="#demo">Demander une démo</a>
+  </div>
+</header>
+
+<main id="haut">
+
+<section class="hero">
+  <div class="wrap">
+    <span class="pill"><i></i>Accès sur démonstration</span>
+    <h1>Tout votre restaurant.<br><span class="g">Un seul outil.</span></h1>
+    <p class="lead">Caisse, back-office, hygiène HACCP, fidélité et marketing piloté par l'IA. Conçu par un restaurateur, réuni dans un seul abonnement.</p>
+    <div class="row">
+      <a class="btn" href="#demo">Demander une démo <svg class="i"><use href="#i-arrow"/></svg></a>
+      <a class="btn ghost" href="#produit">Découvrir le produit</a>
+    </div>
+
+    <div class="stage">
+      <div class="float fa">
+        <span>Marge brute du jour</span>
+        <b class="big mono">68,4 %</b>
+        <span>Objectif du samedi atteint à 14 h 10</span>
+      </div>
+      <div class="device">
+        <div class="screen" aria-label="Aperçu interactif de la caisse">
+          <div class="rail" aria-hidden="true">
+            <span class="on"><svg class="i"><use href="#i-grid"/></svg></span>
+            <span><svg class="i"><use href="#i-receipt"/></svg></span>
+            <span><svg class="i"><use href="#i-thermo"/></svg></span>
+            <span><svg class="i"><use href="#i-users"/></svg></span>
+          </div>
+          <div class="cat">
+            <div class="cat-h"><b>Service du midi</b><span>Sur place</span></div>
+            <div class="pills" id="pos-cats" role="group" aria-label="Catégories"></div>
+            <div class="tiles" id="pos-tiles"></div>
+          </div>
+          <div class="tix">
+            <div class="tix-h"><b>Commande <span class="mono" id="pos-num">#0042</span></b><span>Table 6</span></div>
+            <ul class="lines" id="pos-lines"></ul>
+            <div class="sum">
+              <div><span>dont TVA 10 %</span><span class="mono" id="pos-tva"></span></div>
+              <div class="tot"><span>Total TTC</span><span class="mono" id="pos-total"></span></div>
+            </div>
+            <button class="btn" id="pos-pay" type="button">Encaisser</button>
+          </div>
+        </div>
+      </div>
+      <div class="float fb">
+        <b>Agent Publicité</b>
+        <span>Campagne « Menu du midi » prête pour samedi.</span>
+        <span class="st"><svg class="i"><use href="#i-lock"/></svg>En attente de votre accord</span>
+      </div>
+    </div>
+    <p class="caption">Aperçu interactif simplifié, carte et montants d'exemple. Touchez un produit pour l'ajouter à la commande.</p>
+  </div>
+</section>
+
+<section style="padding-block:24px 40px">
+  <div class="wrap">
+    <ul class="marks">
+      <li><b class="g">4</b><span>outils réunis</span></li>
+      <li><b class="g">7</b><span>modules d'hygiène</span></li>
+      <li><b class="g">14</b><span>allergènes suivis</span></li>
+      <li><b class="g">1</b><span>seul abonnement</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="produit">
+  <div class="wrap">
+    <div class="head c">
+      <p class="eyebrow">Le produit</p>
+      <h2>Chaque vente travaille <span class="g">pour vous.</span></h2>
+      <p class="lead">Une commande encaissée alimente vos marges, votre fidélité et les conseils de l'agent marketing. Vous ne ressaisissez rien.</p>
+    </div>
+
+    <div class="bento">
+      <article class="card glass s7">
+        <div class="t">
+          <p class="eyebrow"><svg class="i"><use href="#i-grid"/></svg>Caisse</p>
+          <h3>Rapide au coup de feu, même quand la table se partage l'addition</h3>
+          <p>Menus et options guidés, écran cuisine relié, paiement en plusieurs moyens. Chacun règle ses articles, le reste du ticket continue.</p>
+        </div>
+        <div class="ui">
+          <div class="ui-h"><span>Addition partagée · Table 6</span><em>Exemple</em></div>
+          <ul class="rows">
+            <li class="paid"><span class="box"></span><span>Le Fermier</span><span class="tagl">Payé · carte</span></li>
+            <li class="paid"><span class="box"></span><span>Citronnade maison</span><span class="tagl">Payé · carte</span></li>
+            <li><span class="box on"><svg class="i"><use href="#i-check"/></svg></span><span>Le Fumé</span><span class="mono">10,90 €</span></li>
+            <li><span class="box on"><svg class="i"><use href="#i-check"/></svg></span><span>Frites fraîches</span><span class="mono">3,50 €</span></li>
+          </ul>
+          <div class="foot"><span>À encaisser</span><b class="mono">14,40 €</b></div>
+        </div>
+      </article>
+
+      <article class="card glass s5 tv">
+        <div class="t">
+          <p class="eyebrow"><svg class="i"><use href="#i-users"/></svg>Équipe</p>
+          <h3>Un code par équipier, des droits par rôle</h3>
+          <p>Remises, annulations et fond de caisse demandent un code autorisé. Vous savez qui a fait quoi, et le pointage se fait au même endroit.</p>
+        </div>
+        <div class="ui">
+          <div class="ui-h"><span>Qui encaisse ?</span><em>Exemple</em></div>
+          <div class="pin">
+            <div class="who"><span>Léa</span><span class="on">Karim</span><span>Inès</span></div>
+            <div class="dots" aria-hidden="true"><i class="f"></i><i class="f"></i><i class="f"></i><i></i></div>
+          </div>
+          <ul class="rows">
+            <li><svg class="i"><use href="#i-lock"/></svg><span>Remise</span><span class="tagl">Code demandé</span></li>
+            <li><svg class="i"><use href="#i-lock"/></svg><span>Annulation de paiement</span><span class="tagl">Code demandé</span></li>
+            <li><svg class="i"><use href="#i-lock"/></svg><span>Fond de caisse</span><span class="tagl">Responsable</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card glass s7 tc">
+        <div class="t">
+          <p class="eyebrow"><svg class="i"><use href="#i-chart"/></svg>Back-office</p>
+          <h3>Votre journée en trois chiffres, votre semaine d'un regard</h3>
+          <p>Un objectif de chiffre d'affaires par jour de la semaine, des alertes quand quelque chose mérite votre attention, et un assistant IA qui répond à vos questions sur vos chiffres.</p>
+        </div>
+        <div class="ui">
+          <div class="ui-h"><span>Semaine en cours</span><em>Données d'exemple</em></div>
+          <div class="kpis">
+            <div><span>CA TTC</span><b>1 415 €</b></div>
+            <div><span>Marge brute</span><b>68,4 %</b></div>
+            <div><span>Panier moyen</span><b>15,06 €</b></div>
+          </div>
+          <div class="chart">
+            <div class="bars" role="img" aria-label="Chiffre d'affaires par jour comparé à l'objectif, du lundi au dimanche">
+              <div style="--h:36%;--o:40%" title="Lundi : 900 € pour un objectif de 1 000 €"><i></i><u></u></div>
+              <div style="--h:44%;--o:40%" title="Mardi : 1 100 € pour un objectif de 1 000 €"><i></i><u></u></div>
+              <div style="--h:52%;--o:48%" title="Mercredi : 1 300 € pour un objectif de 1 200 €"><i></i><u></u></div>
+              <div style="--h:48%;--o:48%" title="Jeudi : 1 200 € pour un objectif de 1 200 €"><i></i><u></u></div>
+              <div style="--h:76%;--o:72%" title="Vendredi : 1 900 € pour un objectif de 1 800 €"><i></i><u></u></div>
+              <div style="--h:92%;--o:80%" title="Samedi : 2 300 € pour un objectif de 2 000 €"><i></i><u></u><em>2 300 €</em></div>
+              <div style="--h:56%;--o:60%" title="Dimanche : 1 400 € pour un objectif de 1 500 €"><i></i><u></u></div>
+            </div>
+            <div class="days" aria-hidden="true"><span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span></div>
+            <div class="legend"><span><i class="sb"></i>Chiffre d'affaires</span><span><i class="sl"></i>Objectif du jour</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card glass s5 tv">
+        <div class="t">
+          <p class="eyebrow"><svg class="i"><use href="#i-chart"/></svg>Analyse de la carte</p>
+          <h3>Quels plats vous font vraiment gagner de l'argent</h3>
+          <p>Coût de revient, marge par produit, pertes. Chaque plat est situé par rapport au reste de votre carte.</p>
+        </div>
+        <div class="ui">
+          <div class="ui-h"><span>Matrice de la carte</span><em>Données d'exemple</em></div>
+          <div class="quad" role="img" aria-label="Produits placés selon leurs ventes et leur marge : Le Fermier et Citronnade en stars, Coleslaw en dormeur, Bucket famille en piège, Cookie à revoir">
+            <span class="ql a">Stars</span><span class="ql b">Dormeurs</span><span class="ql c">Pièges</span><span class="ql d">À revoir</span>
+            <i class="pt l" style="--x:78%;--y:72%"><span>Le Fermier</span></i>
+            <i class="pt" style="--x:60%;--y:86%"><span>Citronnade</span></i>
+            <i class="pt" style="--x:22%;--y:68%"><span>Coleslaw</span></i>
+            <i class="pt l" style="--x:82%;--y:26%"><span>Bucket famille</span></i>
+            <i class="pt" style="--x:20%;--y:22%"><span>Cookie</span></i>
+          </div>
+          <div class="axes"><span>Horizontal : ventes</span><span>Vertical : marge</span></div>
+        </div>
+      </article>
+
+      <article class="card glass s5 tc">
+        <div class="t">
+          <p class="eyebrow"><svg class="i"><use href="#i-thermo"/></svg>Hygiène et PMS</p>
+          <h3>Le cahier d'hygiène, directement dans la caisse</h3>
+          <p>Conçu pour couvrir les exigences HACCP. Relevés, nettoyage, réception, traçabilité, huiles, et un plan de maîtrise sanitaire généré en PDF.</p>
+        </div>
+        <div class="ui">
+          <div class="ui-h"><span>Relevés du jour</span><em>Données d'exemple</em></div>
+          <ul class="rows">
+            <li><svg class="i"><use href="#i-thermo"/></svg><span>Chambre froide <span class="mono">+3,1 °C</span></span><span class="tagl ok"><svg class="i"><use href="#i-check"/></svg>Conforme</span></li>
+            <li><svg class="i"><use href="#i-thermo"/></svg><span>Congélateur <span class="mono">−18,4 °C</span></span><span class="tagl ok"><svg class="i"><use href="#i-check"/></svg>Conforme</span></li>
+            <li><svg class="i"><use href="#i-thermo"/></svg><span>Vitrine <span class="mono">+6,8 °C</span></span><span class="tagl wa"><svg class="i"><use href="#i-alert"/></svg>À vérifier</span></li>
+          </ul>
+          <div class="foot"><span>Nettoyage · 5 tâches sur 7</span><span class="prog"><i></i></span></div>
+        </div>
+      </article>
+
+      <article class="card glass s7">
+        <div class="t">
+          <p class="eyebrow"><svg class="i"><use href="#i-mega"/></svg>Marketing IA</p>
+          <h3>Un agent publicité qui parle votre langue</h3>
+          <p>Pensé pour ceux qui n'ont jamais fait de publicité en ligne. L'agent propose et prépare. Vous validez chaque campagne et chaque budget.</p>
+        </div>
+        <div class="ui">
+          <div class="ui-h"><span>Agent Publicité</span><em>Échange d'exemple</em></div>
+          <div class="chat">
+            <div class="bub me">J'ai 30 € à mettre cette semaine. Tu me conseilles quoi ?</div>
+            <div class="bub ai">Samedi, 24 °C annoncés et braderie en centre-ville. Je vous ai préparé ceci. Rien ne part sans votre accord.</div>
+            <div class="camp ring">
+              <h4>Menu du midi · Google Ads</h4>
+              <dl>
+                <div><dt>Budget</dt><dd>10 € / jour</dd></div>
+                <div><dt>Durée</dt><dd>3 jours</dd></div>
+                <div><dt>Zone</dt><dd>5 km</dd></div>
+              </dl>
+              <div class="chips"><span class="mini go">Valider</span><span class="mini">Modifier</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="all">
+      <div>
+        <h3>Caisse</h3>
+        <ul class="feat">
+          <li><svg class="i"><use href="#i-check"/></svg><span>Menus et options guidés</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Quantités à répartir pour les formules à partager</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Écran cuisine relié</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Addition partagée par article</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Paiement en plusieurs moyens</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Fidélité par points, fichier clients</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Mode hors ligne</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Clôture numérotée, reçue par email</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Back-office</h3>
+        <ul class="feat">
+          <li><svg class="i"><use href="#i-check"/></svg><span>Chiffre d'affaires, coût de revient, marge brute</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>TVA calculée au taux réel</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Matrice de la carte</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Suivi des pertes : casse, invendus, offerts</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Objectif par jour de la semaine</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Fournisseurs et liste de courses</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Pointage, horaires, retards</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Assistant IA, exports CSV et PDF</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Hygiène et PMS</h3>
+        <ul class="feat">
+          <li><svg class="i"><use href="#i-check"/></svg><span>Relevés de températures</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Maintien en température</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Plan de nettoyage</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Contrôles à réception</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Traçabilité et étiquetage</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Suivi des huiles de friture</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>14 allergènes par produit</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>PMS en PDF, coffre-fort de documents</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Marketing IA</h3>
+        <ul class="feat">
+          <li><svg class="i"><use href="#i-check"/></svg><span>Idées de publications chaque semaine</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Météo, événements locaux et ventes pris en compte</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Suivi Google Ads et Meta Ads</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Budget mensuel et alertes</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Veille des concurrents</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Bilan mensuel en langage simple</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Dictée vocale, envoi de photos</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>L'agent retient vos préférences</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="inclus">
+  <div class="wrap">
+    <div class="head c">
+      <p class="eyebrow">Tout inclus</p>
+      <h2>Arrêtez d'empiler <span class="g">les abonnements.</span></h2>
+      <p class="lead">Une caisse, puis une option fidélité, puis une application d'hygiène, puis un tableur pour les marges. RestOS réunit le tout dans un seul forfait.</p>
+    </div>
+    <div class="glass cmp"><div class="tblw"><table>
+      <tr><th>Besoin</th><th>Le plus souvent ailleurs</th><th>Avec RestOS</th></tr>
+      <tr><td>Programme de fidélité</td><td>Option payante</td><td><span class="yes"><svg class="i"><use href="#i-check"/></svg>Inclus</span></td></tr>
+      <tr><td>Hygiène HACCP et PMS</td><td>Logiciel séparé</td><td><span class="yes"><svg class="i"><use href="#i-check"/></svg>Inclus</span></td></tr>
+      <tr><td>Marges et analyse de la carte</td><td>Option ou tableur maison</td><td><span class="yes"><svg class="i"><use href="#i-check"/></svg>Inclus</span></td></tr>
+      <tr><td>Fournisseurs et liste de courses</td><td>Autre outil</td><td><span class="yes"><svg class="i"><use href="#i-check"/></svg>Inclus</span></td></tr>
+      <tr><td>Pointage de l'équipe</td><td>Option ou autre outil</td><td><span class="yes"><svg class="i"><use href="#i-check"/></svg>Inclus</span></td></tr>
+      <tr><td>Publicité en ligne</td><td>Agence ou prestataire</td><td><span class="yes"><svg class="i"><use href="#i-check"/></svg>Forfait Marketing IA</span></td></tr>
+    </table></div></div>
+    <p class="caption">Comparaison indicative avec les offres de caisse courantes. Le détail varie selon l'éditeur.</p>
+  </div>
+</section>
+
+<section id="demarrer">
+  <div class="wrap">
+    <div class="head c">
+      <p class="eyebrow">Démarrer</p>
+      <h2>De la démo au <span class="g">premier service.</span></h2>
+    </div>
+    <ol class="steps">
+      <li class="glass"><h3>Vous demandez une démo</h3><p>Le formulaire prend une minute. Nous vous rappelons.</p></li>
+      <li class="glass"><h3>Nous vous montrons l'outil</h3><p>Caisse, back-office, hygiène, marketing. Vous posez toutes vos questions.</p></li>
+      <li class="glass"><h3>Votre carte est mise en place</h3><p>Produits, options, équipe. Votre fichier clients s'importe depuis un export CSV.</p></li>
+      <li class="glass"><h3>Votre équipe se forme</h3><p>Comptez d'une journée à une semaine pour être à l'aise.</p></li>
+      <li class="glass"><h3>Nous restons joignables</h3><p>En cas de problème, c'est un développeur qui intervient.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="tarifs">
+  <div class="wrap">
+    <div class="head c">
+      <p class="eyebrow">Tarifs</p>
+      <h2>Deux forfaits. <span class="g">Aucune option cachée.</span></h2>
+    </div>
+    <div class="plans">
+      <div class="plan glass">
+        <h3>Caisse</h3>
+        <p class="price"><b>69 €</b><span>HT par mois</span></p>
+        <ul class="feat">
+          <li><svg class="i"><use href="#i-check"/></svg><span>Caisse et écran cuisine</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Back-office et analyse financière</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Hygiène HACCP et PMS</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Fidélité et fichier clients</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Assistant IA du back-office</span></li>
+        </ul>
+        <a class="btn ghost" href="#demo">Demander une démo</a>
+      </div>
+      <div class="plan ring">
+        <span class="badge">Le plus complet</span>
+        <h3>Caisse + Marketing IA</h3>
+        <p class="price"><b class="g">109 €</b><span>HT par mois</span></p>
+        <ul class="feat">
+          <li><svg class="i"><use href="#i-check"/></svg><span>Tout le forfait Caisse</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Agent Marketing et agent Publicité</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Suivi Google Ads et Meta Ads</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Budget, alertes et veille concurrentielle</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Bilan mensuel</span></li>
+        </ul>
+        <a class="btn" href="#demo">Demander une démo</a>
+      </div>
+    </div>
+    <p class="caption">Le budget publicitaire reste à votre main et se règle directement auprès de Google ou de Meta.</p>
+  </div>
+</section>
+
+<section id="histoire">
+  <div class="wrap">
+    <div class="story">
+      <div class="txt">
+        <p class="eyebrow">D'où vient RestOS</p>
+        <h2>Vous ne serez pas notre <span class="g">bêta-testeur.</span></h2>
+        <p>RestOS est testé et approuvé en conditions réelles chez Chicken House, restaurant de poulet Label Rouge à Vitré. Melvin, son gérant, a construit l'outil pour son propre service avant de le proposer à d'autres restaurateurs.</p>
+        <p>Nous démarrons avec un petit nombre de restaurants, pour accompagner chacun correctement. Notre métier d'origine est le vôtre, et l'accompagnement compte autant que le logiciel.</p>
+      </div>
+      <dl class="facts glass">
+        <div><dt>Conçu par</dt><dd>Un restaurateur en activité</dd></div>
+        <div><dt>Éprouvé chez</dt><dd>Chicken House, Vitré</dd></div>
+        <div><dt>Premiers déploiements</dt><dd>Ille-et-Vilaine, puis Bretagne</dd></div>
+        <div><dt>Pour qui</dt><dd>Restauration rapide et restaurants indépendants</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="head c">
+      <p class="eyebrow">Questions fréquentes</p>
+      <h2>Ce que les restaurateurs <span class="g">nous demandent.</span></h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>Combien de temps faut-il pour prendre la caisse en main ?</summary>
+        <p>D'une journée à une semaine selon l'équipe. La caisse a été pensée pour être apprise pendant un service, et vos équipiers ne voient que ce dont ils ont besoin.</p>
+      </details>
+      <details>
+        <summary>Puis-je récupérer mon fichier clients actuel ?</summary>
+        <p>Oui. Vous exportez vos clients au format CSV depuis votre outil actuel, et nous les importons dans RestOS.</p>
+      </details>
+      <details>
+        <summary>Je n'y connais rien en publicité. Marketing IA est-il fait pour moi ?</summary>
+        <p>C'est pour vous qu'il a été conçu. L'agent explique chaque proposition simplement, et ses bilans se lisent sans vocabulaire technique.</p>
+      </details>
+      <details>
+        <summary>L'agent peut-il dépenser de l'argent sans mon accord ?</summary>
+        <p>Non. Chaque campagne et chaque budget attendent votre validation. Le paiement se fait toujours par vous, directement sur la plateforme publicitaire.</p>
+      </details>
+      <details>
+        <summary>Le module hygiène remplace-t-il mon cahier ?</summary>
+        <p>Il est conçu pour couvrir les exigences HACCP : températures, nettoyage, réception, traçabilité, huiles. Si vous n'avez pas de plan de maîtrise sanitaire, RestOS le génère à partir de votre profil.</p>
+      </details>
+      <details>
+        <summary>Que se passe-t-il si Internet tombe en plein service ?</summary>
+        <p>La caisse continue. Les ventes sont gardées sur la tablette, puis envoyées dès que la connexion revient.</p>
+      </details>
+      <details>
+        <summary>Qui intervient en cas de problème ?</summary>
+        <p>Un développeur qui connaît le produit, pas un centre d'appels. Les modalités d'assistance sont précisées dans votre contrat.</p>
+      </details>
+      <details>
+        <summary>RestOS est-il certifié NF525 ?</summary>
+        <p>La loi impose aux logiciels de caisse une certification délivrée par un organisme accrédité. RestOS n'équipera aucun restaurant avant de l'avoir obtenue. Nous vous indiquons où en est la certification pendant la démo.</p>
+      </details>
+      <details>
+        <summary>Sur quel matériel fonctionne RestOS ?</summary>
+        <p>Sur tablette, iPad compris. Pour l'imprimante de tickets, nous vérifions la compatibilité de votre matériel avec vous pendant la démo.</p>
+      </details>
+      <details>
+        <summary>L'IA va-t-elle décider à ma place ?</summary>
+        <p>Non. Elle prépare, compare et signale. Vous gardez chaque décision, et vous pouvez vous servir de la caisse sans jamais ouvrir l'assistant.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="demo" class="cta">
+  <div class="wrap">
+    <div class="contact">
+      <div class="txt">
+        <p class="eyebrow">Démo</p>
+        <h2>Voyez RestOS tourner <span class="g">avant de décider.</span></h2>
+        <p>RestOS ne se télécharge pas en libre-service. Laissez vos coordonnées, nous vous rappelons pour fixer une démonstration.</p>
+        <ul class="feat">
+          <li><svg class="i"><use href="#i-check"/></svg><span>Présentation de la caisse, du back-office, de l'hygiène et du marketing</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Réponses à vos questions sur votre matériel et votre organisation</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Un devis clair à l'issue de l'échange</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <form id="demo-form" class="glass" novalidate>
+          <div class="f2">
+            <div class="field"><label for="f-nom">Prénom et nom</label><input id="f-nom" name="nom" autocomplete="name" required></div>
+            <div class="field"><label for="f-resto">Nom du restaurant</label><input id="f-resto" name="restaurant" autocomplete="organization" required></div>
+          </div>
+          <div class="f2">
+            <div class="field"><label for="f-tel">Téléphone</label><input id="f-tel" name="telephone" type="tel" autocomplete="tel" inputmode="tel" required></div>
+            <div class="field"><label for="f-mail">Email</label><input id="f-mail" name="email" type="email" autocomplete="email" required></div>
+          </div>
+          <div class="f2">
+            <div class="field"><label for="f-ville">Ville et code postal</label><input id="f-ville" name="ville" autocomplete="address-level2" required></div>
+            <div class="field"><label for="f-type">Type d'établissement</label>
+              <select id="f-type" name="type">
+                <option>Restauration rapide</option>
+                <option>Restaurant traditionnel</option>
+                <option>Bar ou café</option>
+                <option>Autre</option>
+              </select>
+            </div>
+          </div>
+          <fieldset>
+            <legend>Ce qui vous intéresse</legend>
+            <div class="checks">
+              <label for="f-i-caisse"><input id="f-i-caisse" type="checkbox" name="interet" value="Caisse" checked> Caisse et gestion</label>
+              <label for="f-i-hyg"><input id="f-i-hyg" type="checkbox" name="interet" value="Hygiène"> Hygiène</label>
+              <label for="f-i-mkt"><input id="f-i-mkt" type="checkbox" name="interet" value="Marketing IA"> Marketing IA</label>
+            </div>
+          </fieldset>
+          <div class="field"><label for="f-msg">Votre message (facultatif)</label><textarea id="f-msg" name="message"></textarea></div>
+          <p class="err" id="f-err" role="alert" hidden></p>
+          <button class="btn" type="submit">Demander ma démo <svg class="i"><use href="#i-arrow"/></svg></button>
+          <p class="small">Vos coordonnées servent uniquement à vous recontacter au sujet de RestOS. Voir la <a href="#confidentialite">politique de confidentialité</a>.</p>
+        </form>
+
+        <div class="done glass" id="demo-done" hidden>
+          <span class="ic"><svg class="i"><use href="#i-check"/></svg></span>
+          <h3 id="done-title">Merci.</h3>
+          <p id="done-text"></p>
+          <p class="small">Version de prévisualisation : le formulaire n'est pas encore relié, aucune donnée n'est envoyée.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div id="legal" class="legal" hidden>
+  <div class="wrap">
+    <nav class="ltabs" aria-label="Pages légales">
+      <a class="back" href="#haut">Retour au site</a>
+      <a href="#mentions-legales">Mentions légales</a>
+      <a href="#confidentialite">Confidentialité</a>
+      <a href="#cgv">Conditions générales</a>
+    </nav>
+
+    <article id="mentions-legales" class="doc glass" hidden>
+      <span class="draft"><svg class="i"><use href="#i-alert"/></svg>Brouillon, à faire valider par un avocat avant mise en ligne</span>
+      <h1>Mentions légales</h1>
+
+      <h2>Éditeur du site</h2>
+      <p>Le site RestOS est édité par <em class="todo">dénomination et forme juridique</em>, au capital de <em class="todo">montant</em>, dont le siège est situé <em class="todo">adresse</em>, immatriculée sous le numéro <em class="todo">SIRET / RCS</em>. Numéro de TVA intracommunautaire : <em class="todo">numéro</em>.</p>
+      <p>Directeur de la publication : <em class="todo">prénom et nom</em>.</p>
+      <p>Contact : par le <a href="#demo">formulaire de demande de démo</a>, par téléphone au <em class="todo">numéro</em> ou par email à <em class="todo">adresse professionnelle</em>.</p>
+
+      <h2>Hébergement</h2>
+      <p>Le site est hébergé par Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, États-Unis. <em class="todo">hébergeur et adresse à confirmer à la mise en ligne</em></p>
+
+      <h2>Propriété intellectuelle</h2>
+      <p>L'ensemble du site, ses textes, son identité visuelle, ses aperçus d'interface et le logiciel RestOS sont la propriété de l'éditeur. Toute reproduction ou réutilisation, totale ou partielle, sans autorisation écrite préalable est interdite.</p>
+
+      <h2>Contenu du site</h2>
+      <p>Le site présente le logiciel RestOS à titre d'information. Les aperçus d'interface sont simplifiés et affichent des données d'exemple. Les tarifs sont indiqués hors taxes et peuvent évoluer. Seul le devis remis au restaurateur engage l'éditeur.</p>
+
+      <h2>Données personnelles et cookies</h2>
+      <p>Le traitement des données recueillies par le formulaire est décrit dans la <a href="#confidentialite">politique de confidentialité</a>. Le site ne dépose aucun cookie publicitaire ni cookie de mesure d'audience.</p>
+
+      <h2>Droit applicable</h2>
+      <p>Le site et les présentes mentions sont soumis au droit français.</p>
+    </article>
+
+    <article id="confidentialite" class="doc glass" hidden>
+      <span class="draft"><svg class="i"><use href="#i-alert"/></svg>Brouillon, à faire valider par un avocat avant mise en ligne</span>
+      <h1>Politique de confidentialité</h1>
+      <p>Cette politique explique quelles données RestOS recueille, pourquoi, pendant combien de temps, et comment exercer vos droits.</p>
+
+      <h2>Responsable du traitement</h2>
+      <p>Le responsable du traitement des données recueillies sur ce site est <em class="todo">dénomination, adresse, contact</em>.</p>
+
+      <h2>Vous visitez le site ou demandez une démo</h2>
+      <p><b>Données recueillies.</b> Celles que vous saisissez dans le formulaire : prénom et nom, nom du restaurant, téléphone, email, ville et code postal, type d'établissement, centres d'intérêt et message.</p>
+      <p><b>Finalité.</b> Vous recontacter, organiser une démonstration et vous adresser un devis.</p>
+      <p><b>Base légale.</b> L'exécution de mesures précontractuelles prises à votre demande.</p>
+      <p><b>Durée de conservation.</b> Trois ans à compter de notre dernier échange, puis suppression.</p>
+      <p><b>Destinataires.</b> L'équipe RestOS et ses prestataires techniques d'hébergement, dans la limite de ce qui est nécessaire. Vos coordonnées ne sont ni vendues ni cédées.</p>
+
+      <h2>Vous êtes restaurateur client</h2>
+      <p>RestOS traite les données nécessaires à la gestion de votre compte, à la facturation et à l'assistance. Ces traitements reposent sur le contrat d'abonnement. Les données de facturation sont conservées pendant la durée imposée par la loi.</p>
+
+      <h2>Vous êtes client d'un restaurant équipé de RestOS</h2>
+      <p>Votre restaurant est responsable des données de son fichier clients et de son programme de fidélité. RestOS agit comme sous-traitant, sur ses seules instructions, dans le cadre d'un accord de traitement des données annexé au contrat d'abonnement. Pour exercer vos droits, adressez-vous d'abord à votre restaurant.</p>
+
+      <h2>Prestataires et lieux d'hébergement</h2>
+      <p>RestOS fait appel à des prestataires techniques pour héberger le site, le logiciel et ses données. <em class="todo">liste des prestataires, localisation des serveurs et garanties en cas de transfert hors Union européenne</em></p>
+      <p>Les polices d'affichage du site sont chargées depuis Google Fonts, ce qui transmet votre adresse IP à Google. <em class="todo">à supprimer si les polices sont hébergées sur le site</em></p>
+
+      <h2>Cookies</h2>
+      <p>Le site ne dépose aucun cookie publicitaire ni cookie de mesure d'audience. Aucun bandeau de consentement n'est donc nécessaire.</p>
+
+      <h2>Vos droits</h2>
+      <p>Vous pouvez demander l'accès à vos données, leur rectification, leur effacement, la limitation de leur traitement ou leur portabilité, et vous opposer à leur traitement. Écrivez à <em class="todo">adresse de contact</em>. Nous répondons dans un délai d'un mois.</p>
+      <p>Si vous estimez que vos droits ne sont pas respectés, vous pouvez saisir la CNIL, 3 place de Fontenoy, 75007 Paris.</p>
+
+      <h2>Mise à jour</h2>
+      <p>Cette politique peut être modifiée. La date de dernière mise à jour est indiquée ici : <em class="todo">date</em>.</p>
+    </article>
+
+    <article id="cgv" class="doc glass" hidden>
+      <span class="draft"><svg class="i"><use href="#i-alert"/></svg>Brouillon, à faire valider par un avocat avant mise en ligne</span>
+      <h1>Conditions générales de vente</h1>
+      <p>Ces conditions s'appliquent aux abonnements au logiciel RestOS souscrits par des professionnels de la restauration. Aucune vente ne se fait en ligne : chaque abonnement fait l'objet d'un devis et d'un contrat d'abonnement signé, qui prévaut en cas de différence.</p>
+
+      <h2>1. Objet</h2>
+      <p>Les présentes conditions définissent les modalités selon lesquelles RestOS met son logiciel à la disposition du client, et les engagements de chacun.</p>
+
+      <h2>2. Service</h2>
+      <p>Le forfait Caisse comprend la caisse, l'écran cuisine, le back-office, l'analyse financière, le module hygiène et PMS, la fidélité et l'assistant du back-office. Le forfait Caisse + Marketing IA y ajoute les agents marketing et publicité. Le service est accessible en ligne, sur tablette.</p>
+
+      <h2>3. Accès</h2>
+      <p>Chaque établissement dispose d'un compte, activé par RestOS. Le client garde ses identifiants confidentiels et répond de l'usage des codes personnels remis à ses équipiers.</p>
+
+      <h2>4. Durée</h2>
+      <p>L'abonnement prend effet à la date d'activation. <em class="todo">durée d'engagement et reconduction</em></p>
+
+      <h2>5. Tarifs et paiement</h2>
+      <p>Forfait Caisse : 69 € HT par mois. Forfait Caisse + Marketing IA : 109 € HT par mois. <em class="todo">prix par établissement, à confirmer</em> La TVA s'ajoute au taux en vigueur. <em class="todo">périodicité et moyen de paiement</em></p>
+      <p>Tout retard de paiement entraîne des pénalités au taux de <em class="todo">taux</em>, ainsi que l'indemnité forfaitaire légale de 40 € pour frais de recouvrement.</p>
+      <p>Le budget publicitaire n'est pas compris dans l'abonnement. Le client le règle directement auprès des plateformes publicitaires.</p>
+
+      <h2>6. Engagements de RestOS</h2>
+      <p>RestOS fournit le service, en assure la maintenance et sauvegarde les données. L'assistance est assurée par un développeur. <em class="todo">niveau de service et délais d'intervention</em></p>
+
+      <h2>7. Engagements du client</h2>
+      <p>Le client utilise le service conformément à sa destination. Il répond de l'exactitude des informations qu'il saisit, notamment les prix, les taux de TVA et les allergènes, et dispose du matériel et de la connexion nécessaires.</p>
+
+      <h2>8. Logiciel de caisse</h2>
+      <p>RestOS ne met le module de caisse à la disposition d'un client qu'après avoir obtenu la certification exigée par la loi pour les logiciels de caisse. Le certificat est remis au client.</p>
+
+      <h2>9. Hygiène</h2>
+      <p>Le module hygiène est un outil d'enregistrement et de suivi. Le client reste seul responsable du respect de la réglementation sanitaire dans son établissement.</p>
+
+      <h2>10. Marketing IA</h2>
+      <p>Les agents formulent des propositions. Aucune campagne n'est lancée et aucune dépense n'est engagée sans validation du client, qui reste responsable de ses comptes publicitaires et des contenus diffusés. RestOS ne garantit aucun résultat commercial.</p>
+
+      <h2>11. Propriété intellectuelle</h2>
+      <p>RestOS concède au client un droit d'utilisation personnel, non exclusif et non cessible, pour la durée de l'abonnement. Les données saisies par le client lui appartiennent.</p>
+
+      <h2>12. Données personnelles</h2>
+      <p>Le client est responsable du traitement des données de ses propres clients et de ses équipiers. RestOS agit comme sous-traitant, selon l'accord de traitement des données annexé au contrat. Voir la <a href="#confidentialite">politique de confidentialité</a>.</p>
+
+      <h2>13. Responsabilité</h2>
+      <p>RestOS est tenu à une obligation de moyens. <em class="todo">plafond de responsabilité et exclusions, à définir avec l'avocat</em></p>
+
+      <h2>14. Résiliation</h2>
+      <p><em class="todo">préavis et conditions de résiliation</em> À la fin de l'abonnement, le client peut récupérer ses données. <em class="todo">format et délai de restitution</em></p>
+
+      <h2>15. Confidentialité</h2>
+      <p>Chaque partie garde confidentielles les informations de l'autre dont elle a connaissance à l'occasion du contrat.</p>
+
+      <h2>16. Modification des conditions</h2>
+      <p>RestOS peut faire évoluer les présentes conditions et en informe le client à l'avance. <em class="todo">délai d'information</em></p>
+
+      <h2>17. Droit applicable</h2>
+      <p>Les présentes conditions sont soumises au droit français. Tout litige relève des tribunaux de <em class="todo">ville</em>.</p>
+    </article>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span><b class="brand">Rest<span class="g">OS</span></b> · Caisse, gestion, hygiène et marketing pour la restauration</span>
+    <nav aria-label="Pied de page">
+      <a href="#produit">Produit</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#demo">Demander une démo</a>
+      <a href="#mentions-legales">Mentions légales</a>
+      <a href="#confidentialite">Confidentialité</a>
+      <a href="#cgv">Conditions générales</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* Pages légales : affichées à la place du site */
+  var legalIds = ['mentions-legales','confidentialite','cgv'];
+  var site = document.getElementById('haut'), legal = document.getElementById('legal');
+  function showLegal(id){
+    site.hidden = true; legal.hidden = false;
+    legalIds.forEach(function(x){ document.getElementById(x).hidden = x !== id; });
+    Array.prototype.forEach.call(legal.querySelectorAll('.ltabs a'), function(t){
+      if(t.getAttribute('href') === '#' + id) t.setAttribute('aria-current', 'page'); else t.removeAttribute('aria-current');
+    });
+    window.scrollTo(0, 0);
+  }
+  var h0 = (location.hash || '').slice(1);
+  if(legalIds.indexOf(h0) > -1) showLegal(h0);
+
+  /* Liens d'ancre */
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if(!a) return;
+    var id = a.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if(!el) return;
+    e.preventDefault();
+    if(legalIds.indexOf(id) > -1){ showLegal(id); return; }
+    if(!legal.hidden){ legal.hidden = true; site.hidden = false; }
+    var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    el.scrollIntoView({behavior: calm ? 'auto' : 'smooth', block: 'start'});
+  });
+
+  /* Aperçu caisse */
+  var eur = new Intl.NumberFormat('fr-FR', {style:'currency', currency:'EUR'});
+  var cats = [
+    {id:'burgers', n:'Burgers', c:'var(--blue)'},
+    {id:'buckets', n:'Buckets', c:'var(--violet)'},
+    {id:'cotes', n:'À côté', c:'var(--cyan)'},
+    {id:'boissons', n:'Boissons', c:'var(--rose)'},
+    {id:'desserts', n:'Desserts', c:'var(--peach)'}
+  ];
+  var produits = [
+    {n:'Le Fermier', d:'Poulet croustillant, cheddar affiné', p:9.9, k:'burgers'},
+    {n:'Le Fumé', d:'Poulet grillé, lard, sauce barbecue', p:10.9, k:'burgers'},
+    {n:'Bucket 8 tenders', d:'2 sauces au choix', p:14.9, k:'buckets'},
+    {n:'Bucket famille', d:'16 pièces, 4 sauces', p:26, k:'buckets'},
+    {n:'Frites fraîches', d:'Sel fumé', p:3.5, k:'cotes'},
+    {n:'Coleslaw maison', d:'Chou, carotte, sauce légère', p:2.9, k:'cotes'},
+    {n:'Citronnade maison', d:'40 cl, menthe fraîche', p:3.2, k:'boissons'},
+    {n:'Cookie chocolat-noisette', d:'Cuit du jour', p:2.8, k:'desserts'}
+  ];
+  var ticket = [{i:0,q:2},{i:4,q:1},{i:6,q:2}];
+  var numero = 42, filtre = 'tout';
+  var catBox = document.getElementById('pos-cats');
+  var tiles = document.getElementById('pos-tiles');
+  var lines = document.getElementById('pos-lines');
+  var payBtn = document.getElementById('pos-pay');
+  function el(tag, cls, txt){ var x = document.createElement(tag); if(cls) x.className = cls; if(txt != null) x.textContent = txt; return x; }
+  function cat(id){ return cats.filter(function(c){return c.id === id;})[0]; }
+
+  [{id:'tout', n:'Tout'}].concat(cats).forEach(function(c){
+    var b = el('button', '', c.n); b.type = 'button';
+    b.setAttribute('aria-pressed', c.id === filtre ? 'true' : 'false');
+    b.addEventListener('click', function(){
+      filtre = c.id;
+      Array.prototype.forEach.call(catBox.children, function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      drawTiles();
+    });
+    catBox.appendChild(b);
+  });
+
+  function drawTiles(){
+    tiles.textContent = '';
+    produits.forEach(function(pr, i){
+      if(filtre !== 'tout' && pr.k !== filtre) return;
+      var c = cat(pr.k), b = el('button', 'tile'); b.type = 'button';
+      b.style.setProperty('--c', c.c);
+      var top = el('span');
+      var k = el('span', 'k'); k.appendChild(el('i')); k.appendChild(document.createTextNode(c.n));
+      top.appendChild(k); top.appendChild(el('b', '', pr.n)); top.appendChild(el('small', '', pr.d));
+      b.appendChild(top); b.appendChild(el('span', 'p mono', eur.format(pr.p)));
+      b.addEventListener('click', function(){
+        var l = ticket.filter(function(x){return x.i === i;})[0];
+        if(l) l.q++; else ticket.push({i:i,q:1});
+        payBtn.textContent = 'Encaisser';
+        drawTicket();
+      });
+      tiles.appendChild(b);
+    });
+  }
+
+  function drawTicket(){
+    lines.textContent = '';
+    var total = 0;
+    if(!ticket.length) lines.appendChild(el('li', 'empty', 'Commande vide. Touchez un produit.'));
+    ticket.forEach(function(l){
+      var pr = produits[l.i], li = el('li');
+      total += pr.p * l.q;
+      li.appendChild(el('span', 'q mono', String(l.q)));
+      li.appendChild(el('span', '', pr.n));
+      li.appendChild(el('span', 'mono', eur.format(pr.p * l.q)));
+      lines.appendChild(li);
+    });
+    document.getElementById('pos-total').textContent = eur.format(total);
+    document.getElementById('pos-tva').textContent = eur.format(total - total / 1.1);
+    document.getElementById('pos-num').textContent = '#' + ('0000' + numero).slice(-4);
+  }
+
+  payBtn.addEventListener('click', function(){
+    if(!ticket.length) return;
+    ticket = []; numero++;
+    payBtn.textContent = 'Encaissé · commande suivante';
+    drawTicket();
+  });
+  drawTiles(); drawTicket();
+
+  /* Formulaire de démo */
+  var form = document.getElementById('demo-form');
+  var err = document.getElementById('f-err');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var manque = [];
+    [['f-nom','votre nom'],['f-resto','le nom du restaurant'],['f-tel','un téléphone'],['f-mail','un email'],['f-ville','votre ville']]
+      .forEach(function(f){ if(!document.getElementById(f[0]).value.trim()) manque.push(f[1]); });
+    if(manque.length){
+      err.textContent = 'Il manque : ' + manque.join(', ') + '.';
+      err.hidden = false; return;
+    }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('f-mail').value.trim())){
+      err.textContent = "L'adresse email semble incomplète. Vérifiez-la, puis renvoyez la demande.";
+      err.hidden = false; document.getElementById('f-mail').focus(); return;
+    }
+    err.hidden = true;
+    var prenom = document.getElementById('f-nom').value.trim().split(/\s+/)[0];
+    document.getElementById('done-title').textContent = 'Merci, ' + prenom + '.';
+    document.getElementById('done-text').textContent =
+      'Nous vous rappelons pour fixer la démonstration de RestOS pour ' +
+      document.getElementById('f-resto').value.trim() + '.';
+    form.hidden = true;
+    document.getElementById('demo-done').hidden = false;
+  });
+})();
+</script>
+
+</body></html>
