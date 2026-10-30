@@ -1,9 +1,16 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Site vitrine RestOS</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap">
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>RestOS, la caisse et la gestion pour restaurateurs</title>
+<meta name="description" content="RestOS réunit caisse, back-office, hygiène et marketing IA dans un seul outil, conçu par un restaurateur pour les restaurateurs. Demandez une démonstration.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#05060d">
+<meta property="og:title" content="RestOS, la caisse et la gestion pour restaurateurs">
+<meta property="og:description" content="Caisse, back-office, hygiène et marketing IA dans un seul outil.">
+<meta property="og:type" content="website">
+<meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
 <style>
 /* Layout : nuit profonde, un seul univers visuel. Le produit est montré dans un cadre de tablette posé sur un halo
-   bleu-violet-cyan ; les modules vivent dans une grille de panneaux en verre dépoli. Charte RestOS : Syne / Outfit / DM Mono. */
+   bleu-violet-cyan ; les modules vivent dans une grille de panneaux en verre dépoli. Charte RestOS : Plus Jakarta Sans (titres, chiffres clés) / Inter (texte, chiffres). */
 :root{
   --bg:#05060d; --bg-2:#0a0c19; --screen:#080a14;
   --ink:#f4f5fb; --muted:#a2a8c3; --dim:#6b7190;
@@ -15,26 +22,27 @@
   --on-btn:#ffffff; --glow:rgba(96,110,255,.55);
   --ok:#43dea0; --warn:#ffb85c;
   --shadow:0 40px 80px -40px rgba(0,0,0,.85);
-  --display:"Syne","Outfit",system-ui,sans-serif;
-  --body:"Outfit","Segoe UI",system-ui,sans-serif;
-  --mono:"DM Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --display:"Plus Jakarta Sans","Inter",system-ui,sans-serif;
+  --body:"Inter","Segoe UI",system-ui,sans-serif;
+  --mono:"Inter","Segoe UI",system-ui,sans-serif;
   --r:22px; --r-sm:14px; --wrap:1140px;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased;font-feature-settings:"cv11","ss01";overflow-x:clip}
 h1,h2,h3,h4,p,ul,ol,dl,dd,figure{margin:0}
 ul,ol{padding:0;list-style:none}
 a{color:inherit;text-decoration:none}
 button,input,select,textarea{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
 svg.i{width:1.2em;height:1.2em;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.mono{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.01em;font-weight:600}
+.kpis b,.bars em,.camp dd,.price b,.marks b{font-variant-numeric:tabular-nums lining-nums}
 
 .wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:20px}
 section{position:relative;padding-block:88px;scroll-margin-top:88px}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
-h1,h2{font-family:var(--display);font-weight:800;letter-spacing:-.035em;text-wrap:balance}
+h1,h2{font-family:var(--display);font-weight:800;letter-spacing:-.03em;text-wrap:balance}
 h1{font-size:clamp(2.7rem,8.4vw,5.6rem);line-height:.98}
 h2{font-size:clamp(1.9rem,4.6vw,3.2rem);line-height:1.04}
 h3{font-family:var(--display);font-weight:700;font-size:1.3rem;line-height:1.2;letter-spacing:-.02em}
@@ -181,7 +189,7 @@ h3{font-family:var(--display);font-weight:700;font-size:1.3rem;line-height:1.2;l
 .kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border-bottom:1px solid var(--line)}
 .kpis div{display:grid;gap:2px;padding:12px 14px;background:rgba(5,6,13,.9);min-width:0}
 .kpis span{font-size:.72rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
-.kpis b{font-family:var(--mono);font-weight:500;font-size:1.05rem;white-space:nowrap}
+.kpis b{font-family:var(--mono);font-weight:600;font-size:1.05rem;white-space:nowrap}
 @media (max-width:520px){ .kpis div{padding:10px} .kpis b{font-size:.9rem} .kpis span{font-size:.62rem} }
 .chart{padding:16px 14px 12px}
 .bars{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;align-items:end;height:132px;border-bottom:1px solid var(--line-2)}
